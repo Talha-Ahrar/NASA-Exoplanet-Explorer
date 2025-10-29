@@ -7,7 +7,13 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production --base-href=/NASA-Exoplanet-Explorer/ && npx angular-cli-ghpages --dir=dist/nasa-exoplanet/browser --no-silent"
+
+
+
+"deploy": "ng build --configuration production --base-href=/NASA-Exoplanet-Explorer/ && npx angular-cli-ghpages --dir=dist/nasa-exoplanet/browser"
+
+
+
   },
   "prettier": {
     "overrides": [
