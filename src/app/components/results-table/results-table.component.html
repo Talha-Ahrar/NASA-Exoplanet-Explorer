@@ -1,0 +1,294 @@
+<div class="results-container" *ngIf="results.length > 0">
+  <div class="results-header">
+    <h3>Search Results</h3>
+    <span class="results-count">{{ results.length }} exoplanet{{ results.length !== 1 ? 's' : '' }} found</span>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th (click)="sort('pl_name')" class="sortable">
+            <div class="th-content">
+              <span>Planet Name</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('pl_name') === 'both' || getSortIcon('pl_name') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_name' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('pl_name') === 'both' || getSortIcon('pl_name') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_name' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('hostname')" class="sortable">
+            <div class="th-content">
+              <span>Host Name</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('hostname') === 'both' || getSortIcon('hostname') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'hostname' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('hostname') === 'both' || getSortIcon('hostname') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'hostname' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('discoverymethod')" class="sortable">
+            <div class="th-content">
+              <span>Discovery Method</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('discoverymethod') === 'both' || getSortIcon('discoverymethod') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'discoverymethod' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('discoverymethod') === 'both' || getSortIcon('discoverymethod') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'discoverymethod' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('disc_year')" class="sortable">
+            <div class="th-content">
+              <span>Year</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('disc_year') === 'both' || getSortIcon('disc_year') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'disc_year' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('disc_year') === 'both' || getSortIcon('disc_year') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'disc_year' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('disc_facility')" class="sortable">
+            <div class="th-content">
+              <span>Facility</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('disc_facility') === 'both' || getSortIcon('disc_facility') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'disc_facility' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('disc_facility') === 'both' || getSortIcon('disc_facility') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'disc_facility' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('pl_orbper')" class="sortable">
+            <div class="th-content">
+              <span>Orbital Period (days)</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('pl_orbper') === 'both' || getSortIcon('pl_orbper') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_orbper' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('pl_orbper') === 'both' || getSortIcon('pl_orbper') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_orbper' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('pl_rade')" class="sortable">
+            <div class="th-content">
+              <span>Radius (Earth)</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('pl_rade') === 'both' || getSortIcon('pl_rade') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_rade' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('pl_rade') === 'both' || getSortIcon('pl_rade') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_rade' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('pl_masse')" class="sortable">
+            <div class="th-content">
+              <span>Mass (Earth)</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('pl_masse') === 'both' || getSortIcon('pl_masse') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_masse' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('pl_masse') === 'both' || getSortIcon('pl_masse') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'pl_masse' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+          <th (click)="sort('sy_dist')" class="sortable">
+            <div class="th-content">
+              <span>Distance (pc)</span>
+              <div class="sort-icons">
+                <svg *ngIf="getSortIcon('sy_dist') === 'both' || getSortIcon('sy_dist') === 'up'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'sy_dist' && sortDirection === 'asc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 14l5-5 5 5z"/>
+                </svg>
+                <svg *ngIf="getSortIcon('sy_dist') === 'both' || getSortIcon('sy_dist') === 'down'"
+                     class="sort-icon"
+                     [class.active]="sortColumn === 'sy_dist' && sortDirection === 'desc'"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="12"
+                     height="12"
+                     viewBox="0 0 24 24"
+                     fill="currentColor">
+                  <path d="M7 10l5 5 5-5z"/>
+                </svg>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let planet of sortedResults; let i = index" [class.even]="i % 2 === 0">
+          <td>{{ planet.pl_name }}</td>
+          <td>
+            <a
+              [href]="getNASALink(planet.hostname)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nasa-link"
+            >
+              {{ planet.hostname }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </td>
+          <td>{{ planet.discoverymethod }}</td>
+          <td>{{ planet.disc_year }}</td>
+          <td>{{ planet.disc_facility }}</td>
+          <td class="number-cell">{{ formatNumber(planet.pl_orbper) }}</td>
+          <td class="number-cell">{{ formatNumber(planet.pl_rade) }}</td>
+          <td class="number-cell">{{ formatNumber(planet.pl_masse) }}</td>
+          <td class="number-cell">{{ formatNumber(planet.sy_dist) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="no-results" *ngIf="results.length === 0">
+  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="11" cy="11" r="8"></circle>
+    <path d="m21 21-4.35-4.35"></path>
+  </svg>
+  <p>No results to display</p>
+  <span>Use the search panel above to find exoplanets</span>
+</div>

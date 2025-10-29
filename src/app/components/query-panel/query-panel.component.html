@@ -1,0 +1,70 @@
+<div class="query-panel">
+  <h2>Exoplanet Search Filters</h2>
+
+  <div class="loading-message" *ngIf="queryOptions.years.length === 0">
+    Loading exoplanet data, please wait...
+  </div>
+
+  <div class="query-grid" *ngIf="queryOptions.years.length > 0">
+    <div class="query-field">
+      <label for="year">Discovery Year</label>
+      <ng-select
+        id="year"
+        [(ngModel)]="selectedYear"
+        [items]="queryOptions.years"
+        [clearable]="true"
+        [searchable]="true"
+        placeholder="Select year"
+        class="query-select"
+      ></ng-select>
+    </div>
+
+    <div class="query-field">
+      <label for="method">Discovery Method</label>
+      <ng-select
+        id="method"
+        [(ngModel)]="selectedMethod"
+        [items]="queryOptions.methods"
+        [clearable]="true"
+        [searchable]="true"
+        placeholder="Select method"
+        class="query-select"
+      ></ng-select>
+    </div>
+
+    <div class="query-field">
+      <label for="hostname">Host Name</label>
+      <ng-select
+        id="hostname"
+        [(ngModel)]="selectedHostname"
+        [items]="queryOptions.hostnames"
+        [clearable]="true"
+        [searchable]="true"
+        placeholder="Select host"
+        class="query-select"
+      ></ng-select>
+    </div>
+
+    <div class="query-field">
+      <label for="facility">Discovery Facility</label>
+      <ng-select
+        id="facility"
+        [(ngModel)]="selectedFacility"
+        [items]="queryOptions.facilities"
+        [clearable]="true"
+        [searchable]="true"
+        placeholder="Select facility"
+        class="query-select"
+      ></ng-select>
+    </div>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="button-group" *ngIf="queryOptions.years.length > 0">
+    <button type="button" class="btn btn-secondary" (click)="onClear()">Clear</button>
+    <button type="button" class="btn btn-primary" (click)="onSearch()">Search</button>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="exoplanet-search">
+  <app-header></app-header>
+
+  <div class="container">
+    <div class="loading-container" *ngIf="isLoading">
+      <div class="loading-spinner"></div>
+      <p>Loading exoplanet data...</p>
+    </div>
+
+    <div class="content" *ngIf="!isLoading">
+      <app-query-panel
+        [queryOptions]="queryOptions"
+        (search)="onSearch($event)"
+        (clear)="onClear()"
+      ></app-query-panel>
+
+      <app-results-table
+        *ngIf="hasSearched"
+        [results]="searchResults"
+      ></app-results-table>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

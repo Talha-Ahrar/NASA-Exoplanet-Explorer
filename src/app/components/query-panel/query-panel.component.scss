@@ -1,0 +1,126 @@
+.query-panel {
+  background: #faf7ff;
+  border: 1px solid #e0d7ff;
+  border-radius: 12px;
+  padding: 2rem;
+  color: #2d2d2d;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+
+  h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #4b3fa8;
+    text-align: center;
+  }
+
+  .query-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .query-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #4b3fa8;
+    }
+
+    ::ng-deep {
+      .ng-select {
+        .ng-select-container {
+          border: 1.5px solid #c7bdf5;
+          border-radius: 8px;
+          background: white;
+          color: #2d2d2d;
+          padding: 0.5rem 0.75rem;
+          transition: border-color 0.2s ease;
+
+          &:hover {
+            border-color: #a49ae9;
+          }
+
+          &.ng-has-value {
+            border-color: #7b6ee6;
+          }
+        }
+
+        &.ng-select-focused .ng-select-container {
+          border-color: #5b4ee0;
+          box-shadow: 0 0 0 3px rgba(91, 78, 224, 0.15);
+        }
+
+        .ng-dropdown-panel {
+          background: #fff;
+          border: 1px solid #dcd8f9;
+          border-radius: 8px;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .ng-option {
+          color: #2d2d2d;
+          padding: 10px 12px;
+
+          &.ng-option-marked {
+            background: #f3f0ff;
+            color: #5b4ee0;
+          }
+
+          &.ng-option-selected {
+            background: #5b4ee0;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .error-message {
+    background: #fff0f0;
+    border: 1px solid #ffb3b3;
+    color: #b22;
+    padding: 0.75rem;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    .btn {
+      padding: 0.65rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      font-size: 1rem;
+
+      &.btn-primary {
+        background: #5b4ee0;
+        color: #fff;
+
+        &:hover {
+          background: #4b3fa8;
+        }
+      }
+
+      &.btn-secondary {
+        background: #ebe8ff;
+        color: #4b3fa8;
+
+        &:hover {
+          background: #dedaff;
+        }
+      }
+    }
+  }
+}
